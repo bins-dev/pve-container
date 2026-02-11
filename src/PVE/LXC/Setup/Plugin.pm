@@ -1,6 +1,16 @@
 package PVE::LXC::Setup::Plugin;
 
-# the abstract Plugin interface which user should restrict themself too
+# The abstract Plugin interface which user should restrict themself too.
+#
+# There are two main implementations of this interface:
+# - Base: This is the base for all "normal" Linux system distros, where PVE tries to manage all
+#   basic environment aspects (like network related configs, hostname). If something fails there,
+#   the error should be relayed to the caller.
+# - Unmanaged: this avoids doing as much as possible, assuming that the CT and it's enviroment gets
+#   managed through other means (from manually or some other init or configuration stack). Due to
+#   that, we should try to avoid erroring out but rather returning safe defaults or undef where we
+#   cannot determine something. The calling code then needs to be able to handle this explicitly,
+#   sometimes by having a dedicated check for the CT being of type "unmanaged".
 
 use strict;
 use warnings;
