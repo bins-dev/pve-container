@@ -987,6 +987,15 @@ my $mp_desc = {
         verbose_description => "Path to the mount point as seen from inside the container.\n\n"
             . "NOTE: Must not contain any symlinks for security reasons.",
     },
+    keepattrs => {
+        type => 'boolean',
+        description => "Inherit ownership and permissions from the mount point directory.",
+        verbose_description =>
+            "Inherit UID, GID and access mode from the mount point directory, "
+            . "if it exists already.",
+        optional => 1,
+        default => 0,
+    },
 };
 PVE::JSONSchema::register_format('pve-ct-mountpoint', $mp_desc);
 

@@ -2473,10 +2473,8 @@ sub mountpoint_hotplug : prototype($$$$$) {
         chdir('/')
             or die "failed to change root directory within the container's mount namespace: $!\n";
 
-        my $keep_attrs = $mp->{type} eq 'volume';
-
         mountpoint_insert_staged(
-            $mount_fd, undef, $mp->{mp}, $opt, $root_uid, $root_gid, $keep_attrs,
+            $mount_fd, undef, $mp->{mp}, $opt, $root_uid, $root_gid, $mp->{keepattrs},
         );
     });
 }
