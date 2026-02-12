@@ -1,3 +1,9 @@
+pve-container (6.1.2) trixie; urgency=medium
+
+  * make mount point attribute preservation configurable and opt-in
+
+ -- Proxmox Support Team <support@proxmox.com>  Thu, 12 Feb 2026 15:22:46 +0100
+
 pve-container (6.1.1) trixie; urgency=medium
 
   * setup: plugin interface: add missing check_systemd_nesting stub.
